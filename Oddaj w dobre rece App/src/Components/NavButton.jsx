@@ -1,7 +1,7 @@
 import React from "react";
 
-export const NavButton = ({name, classMod}) => {
+export const NavButton = ({name, classMod, navigate}) => {
     return(
-        <button className={classMod}>{name}</button>
+        <button onClick={navigate} className={classMod}>{name}</button>
     )
 }

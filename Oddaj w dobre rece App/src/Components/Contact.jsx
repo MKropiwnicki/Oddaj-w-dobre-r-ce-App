@@ -22,8 +22,7 @@ export const Contact = () => {
     }
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleContact = () => {
         setError('');
 
         if (isEmailValid && isNameValid && isInfoValid) {
@@ -36,8 +35,10 @@ export const Contact = () => {
             })
                 .then(response => {
                     if (response.ok) {
+                        console.log(response)
                         return response.json();
                     } else {
+                        console.log(response)
                         throw new Error('Błąd przy wysyłaniu wiadomości');
                     }
                 })
@@ -50,7 +51,7 @@ export const Contact = () => {
                 })
                 .catch(err => {
                     setError(err.message);
-                    console.log(error);
+                    console.log(err.message);
                     setSuccess(false);
                 });
         }
@@ -82,7 +83,7 @@ export const Contact = () => {
 
         const spacePresent = /\s/;
 
-        if(spacePresent.test(name) && name.length === 0) {
+        if(!spacePresent.test(name)) {
             return true
         } else {
             return false
@@ -114,7 +115,7 @@ export const Contact = () => {
                         <div>
                             <label htmlFor='name'>Wpisz swoje imię:</label>
                             <input value={name} onChange={(e) => setName(e.target.value)} type='text' id='name' placeholder='Mateusz'/>
-                            {isNameValid === false && name === '' && (
+                            {isNameValid === false && (
                                 <p className='form-validation'>
                                     Podane imię jest nieprawidłowe!
                                 </p>
@@ -139,7 +140,7 @@ export const Contact = () => {
                             </p>
                         )}
                     </div>
-                    <SubmitButton submit={handleSubmit} name='Wyślij' classMod='submit-btn'/>
+                    <SubmitButton submit={handleContact} name='Wyślij' classMod='submit-btn'/>
                 </form>
             </div>
         </div>
