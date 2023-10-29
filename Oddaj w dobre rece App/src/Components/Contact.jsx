@@ -22,8 +22,7 @@ export const Contact = () => {
     }
 
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleContact = () => {
         setError('');
 
         if (isEmailValid && isNameValid && isInfoValid) {
@@ -39,6 +38,7 @@ export const Contact = () => {
                         console.log(response)
                         return response.json();
                     } else {
+                        console.log(response)
                         throw new Error('Błąd przy wysyłaniu wiadomości');
                     }
                 })
@@ -140,7 +140,7 @@ export const Contact = () => {
                             </p>
                         )}
                     </div>
-                    <SubmitButton submit={handleSubmit} name='Wyślij' classMod='submit-btn'/>
+                    <SubmitButton submit={handleContact} name='Wyślij' classMod='submit-btn'/>
                 </form>
             </div>
         </div>
