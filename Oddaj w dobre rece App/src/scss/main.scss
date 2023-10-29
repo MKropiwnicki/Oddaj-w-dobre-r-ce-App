@@ -2,7 +2,21 @@
 @use 'settings/colors';
 @use 'settings/fonts';
 
+@use 'elements/header';
+@use 'elements/info';
+@use 'elements/steps';
+@use 'elements/about';
+@use 'elements/partners';
+@use 'elements/contact';
+
+#root {
+  width: 100%;
+}
+
 body {
   font-family: fonts.$font-base;
+  background: colors.$main;
+  margin: 0;
+  width: 100%;
 }
 

@@ -1,0 +1,125 @@
+@use '../settings/colors';
+@use '../settings/fonts';
+
+
+.header-container {
+  width: 100%;
+  //height: 963px;
+  height: 100vh;
+  background: colors.$main;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+  .header-img {
+    width: 885px;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: right;
+
+    img {
+      width: auto;
+      height: auto;
+    }
+  }
+
+  .header-content {
+    width: 700px;
+    height: 100%;
+    padding: 2rem 0 0 0;
+    background: transparent;
+
+    .first-nav {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 1rem;
+
+      .btn {
+        font-family: fonts.$font-base;
+        color: colors.$dark-gray;
+        font-size: 13px;
+        padding: 9px 10px;
+        background: none;
+        border: none;
+      }
+
+      .register {
+        border: 1px solid colors.$yellow;
+        border-radius: 0;
+      }
+    }
+
+    .navigation {
+      width: 100%;
+
+      ul {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 55px;
+
+        a {
+          font-size: 18px;
+          line-height: 24px;
+          color: colors.$dark-gray;
+          font-family: fonts.$font-base;
+        }
+      }
+    }
+  }
+  .spacer {
+    height: 100%;
+    width: 142px;
+  }
+
+  .header-box {
+    width: 674px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+      font-size: 34px;
+      line-height: 55px;
+      color: colors.$dark-gray;
+      font-family: fonts.$font-base;
+
+    }
+
+    img {
+      width: 253px;
+      height: 33px;
+      margin: 25px 0 65px 0;
+    }
+
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 44px;
+      padding: 0 1.5rem;
+
+      .bigBtn {
+        width: 310px;
+        padding: 13px 51px;
+        border: 1px solid colors.$dark-gray;
+        border-radius: 0;
+        background: none;
+        text-transform: uppercase;
+        font-size: 36px;
+        line-height: 45px;
+        font-family: fonts.$font-base;
+        font-weight: 300;
+      }
+    }
+
+
+  }
+}
