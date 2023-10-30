@@ -6,29 +6,29 @@ export const Contact = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
-    const [info, setInfo] = useState('');
+    const [message, setMessage] = useState('');
     const [isNameValid, setIsNameValid] = useState(false);
     const [isEmailValid, setIsEmailValid] = useState(false);
-    const [isInfoValid, setIsInfoValid] = useState(false);
+    const [isMessageValid, setIsMessageValid] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState('');
 
     const messageAPI = 'https://fer-api.coderslab.pl/v1/portfolio/contact'
 
-    const message = {
+    const userMessage = {
         name: name,
         email: email,
-        info: info
+        message: message
     }
 
 
     const handleContact = () => {
         setError('');
 
-        if (isEmailValid && isNameValid && isInfoValid) {
+        if (isEmailValid && isNameValid && isMessageValid) {
             fetch(messageAPI, {
                 method: "POST",
-                body: JSON.stringify(message),
+                body: JSON.stringify(userMessage),
                 headers: {
                     "Content-Type": "application/json"
                 }
@@ -46,7 +46,7 @@ export const Contact = () => {
                     console.log(data);
                     setSuccess(true);
                     setEmail('');
-                    setInfo('');
+                    setMessage('');
                     setName('');
                 })
                 .catch(err => {
@@ -66,8 +66,8 @@ export const Contact = () => {
     }, [name]);
 
     useEffect(() => {
-        setIsInfoValid(infoValidation(info));
-    }, [info]);
+        setIsMessageValid(messageValidation(message));
+    }, [message]);
 
     const emailValidation = () => {
         const atPresent = /[@]/;
@@ -90,8 +90,8 @@ export const Contact = () => {
         }
     }
 
-    const infoValidation = () => {
-        if(info.length >= 120) {
+    const messageValidation = () => {
+        if(message.length >= 120) {
             return true
         } else {
             return false
@@ -133,8 +133,8 @@ export const Contact = () => {
                     </div>
                     <div className='form-info'>
                         <label htmlFor='info'>Wpisz swoją wiadomość:</label>
-                        <textarea id='info' value={info} onChange={(e) => setInfo(e.target.value)} placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'/>
-                        {isInfoValid === false && info !== '' && (
+                        <textarea id='info' value={message} onChange={(e) => setMessage(e.target.value)} placeholder='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'/>
+                        {isMessageValid === false && message !== '' && (
                             <p className='form-validation'>
                                 Wiadomość musi zawierać conajmniej 120 znaków!
                             </p>
