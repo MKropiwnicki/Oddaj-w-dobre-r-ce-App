@@ -22,7 +22,8 @@ export const Contact = () => {
     }
 
 
-    const handleContact = () => {
+    const handleContact = (e) => {
+        e.preventDefault();
         setError('');
 
         if (isEmailValid && isNameValid && isMessageValid) {
